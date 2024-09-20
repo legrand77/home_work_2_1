@@ -1,16 +1,14 @@
 #include <iostream>
 #include <locale.h>
 #include <cstdlib>
-
 struct bank_account
 {
         int account_number;
         std::string owner_name;
-        double balance;
+         float balance;
 };
-double changing_balance(bank_account* p, double n) {
+void changing_balance(bank_account* p, float n) {
     p->balance = n;
-    return 0;
 };
 
 int main(int argc, char** argv)
@@ -18,7 +16,7 @@ int main(int argc, char** argv)
     setlocale(LC_ALL, "Russian");
     system("chcp 1251");
     bank_account client;
-    double new_balance;
+    float new_balance;
     std::cout << "¬ведите номер счЄта : ";
     std::cin >> client.account_number;
     std::cout << "¬ведите им€ владельца: ";
@@ -30,7 +28,8 @@ int main(int argc, char** argv)
     changing_balance(&client, new_balance);
     std::cout << "¬аш счЄт: " << client.owner_name << ", "
     << client.account_number << ", " << int(client.balance) << "."
-    << int((client.balance - int(client.balance))*100) << std::endl;
+    << (client.balance - int(client.balance)) * 100 << std::endl;
     return EXIT_SUCCESS;
+    
 }
 
